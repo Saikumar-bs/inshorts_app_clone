@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:inshorts_clone/main.dart';
 import 'constants.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class NewsScreen extends StatelessWidget {
-  const NewsScreen({Key? key}) : super(key: key);
+  final headline;
+  final text;
+  const NewsScreen({
+    Key? key,
+    this.headline,
+    this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +28,20 @@ class NewsScreen extends StatelessWidget {
               ),
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(15.0),
             child: Text(
-              'From its medieval origins to the digital era, learn everything there is to know',
+              headline,
               style: TextStyle(
                 color: kTextColor,
                 fontSize: 25.0,
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(15.0),
+          Padding(
+            padding: EdgeInsets.fromLTRB(18.0, 12.0, 20.0, 12.0),
             child: Text(
-              'Lorem ipsum, or ipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.',
+              text,
               style: TextStyle(
                 color: kTextColor,
                 fontSize: 18.0,
@@ -79,11 +83,11 @@ class NewsScreen extends StatelessWidget {
 //   }
 // }
 
-_launchURL() async {
-  const url = 'https://fwd.wiki';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
+// _launchURL() async {
+//   const url = 'https://fwd.wiki';
+//   if (await canLaunch(url)) {
+//     await launch(url);
+//   } else {
+//     throw 'Could not launch $url';
+//   }
+// }
