@@ -6,7 +6,6 @@ const kTextColor = Colors.black;
 const kImage1 = AssetImage("assets/images/News1.jpg");
 const kImage2 = AssetImage("assets/images/News2.png");
 const kImage3 = AssetImage("assets/images/News3.jpeg");
-
 const kImage5 = AssetImage("assets/images/News5.jpg");
 
 String kHeading =

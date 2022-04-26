@@ -37,7 +37,7 @@ class _NewsScreenState extends State<NewsScreen> {
             onPanUpdate: (details) {
               final provider =
                   Provider.of<NewsDataCard>(context, listen: false);
-              provider.updatePosition(details);
+              provider.updatePosition(details, context);
             },
             // onPanEnd: (details) {
             //   final provider =
