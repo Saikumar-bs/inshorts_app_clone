@@ -24,8 +24,8 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    String? swipeDirection;
     return Scaffold(
+      key: const Key('Scaffold'),
       body: SafeArea(
         child: SizedBox.expand(
           child: GestureDetector(
