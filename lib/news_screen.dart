@@ -50,8 +50,8 @@ class _NewsScreenState extends State<NewsScreen> {
                 children: [
                   NewsCard(
                       size: size,
-                      headings: kHeading,
-                      info: kDetails,
+                      headings: kHeading1,
+                      info: kDetails1,
                       image: kImage1),
                   NewsCard(
                       size: size,

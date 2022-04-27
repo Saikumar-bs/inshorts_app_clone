@@ -23,7 +23,7 @@ const kImage10 = NetworkImage(
 
 //Headings
 
-String kHeading =
+String kHeading1 =
     "As Delhi Sees Over 60% Spike, India's Fresh Covid Tally Zooms to 2,380";
 String kHeading2 =
     "MS Dhoni smashes 16 runs off last 4 balls as CSK defeat MI on last ball";
@@ -44,7 +44,7 @@ String kHeading10 =
 
 // Details
 
-String kDetails =
+String kDetails1 =
     "Delhi logged 1,009 fresh Covid cases on Wednesday, a 60 per cent jump from a day ago, with the city government making the wearing of masks in public places mandatory again and announcing a Rs 500 fine on violators. This was the maximum number of cases recorded in Delhi since February 10 when 1,104 infections were reported.";
 String kDetails2 =
     "Chennai Super Kings (CSK) defeated Mumbai Indians (MI) by three wickets to register their second victory in IPL 2022. MS Dhoni slammed 16 runs off the last four deliveries to help CSK chase down the 156-run target on the last ball of the match. MI have now lost their first seven matches in IPL 2022.";
