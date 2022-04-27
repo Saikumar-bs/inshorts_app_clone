@@ -34,7 +34,7 @@ class _NewsCardState extends State<NewsCard> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(16.0),
         child: Text(
           widget.headings,
           style: const TextStyle(

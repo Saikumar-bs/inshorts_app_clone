@@ -51,4 +51,15 @@ void main() {
     expect(text.style?.color, Colors.black);
     expect(text.style?.fontSize, 25.0);
   });
+
+//To check padding instances
+  testWidgets('find padding instances', (WidgetTester tester) async {
+    const childWidget = Padding(padding: EdgeInsets.all(16.0));
+
+    // Provide the childWidget to the Container.
+    await tester.pumpWidget(Container(child: childWidget));
+
+    // Search for the childWidget in the tree and verify it exists.
+    expect(find.byWidget(childWidget), findsOneWidget);
+  });
 }
