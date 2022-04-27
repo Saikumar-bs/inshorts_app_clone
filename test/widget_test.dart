@@ -40,8 +40,8 @@ void main() {
     expect(infoFinder, findsOneWidget);
   });
 
-//To check the text color and font size of the heading
-  testWidgets('To test color and fontSize of text',
+//To check the text color, font size and font weight of the heading
+  testWidgets('To test color, fontSize and fontWeight of text heading',
       (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
 
@@ -50,16 +50,52 @@ void main() {
 
     expect(text.style?.color, Colors.black);
     expect(text.style?.fontSize, 25.0);
+    expect(text.style?.fontWeight, FontWeight.bold);
   });
 
-//To check padding instances
+//To check the text color, font size and font weight of the info
+  testWidgets('To test color and fontSize of text info',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+
+    final text = tester.widget<Text>(find.text(
+        "Delhi logged 1,009 fresh Covid cases on Wednesday, a 60 per cent jump from a day ago, with the city government making the wearing of masks in public places mandatory again and announcing a Rs 500 fine on violators. This was the maximum number of cases recorded in Delhi since February 10 when 1,104 infections were reported."));
+
+    expect(text.style?.color, Colors.black);
+    expect(text.style?.fontSize, 18.0);
+  });
+
+//To check padding instance of the heading
   testWidgets('find padding instances', (WidgetTester tester) async {
     const childWidget = Padding(padding: EdgeInsets.all(16.0));
 
-    // Provide the childWidget to the Container.
     await tester.pumpWidget(Container(child: childWidget));
 
-    // Search for the childWidget in the tree and verify it exists.
     expect(find.byWidget(childWidget), findsOneWidget);
   });
+
+// //To test the asset image
+//   test('AssetImage from package', () {
+//     const AssetImage image = AssetImage(
+//       'assets/images/News1.jpg',
+//       package: 'test_package',
+//     );
+//     expect(image.keyName, 'packages/test_package/assets/images/News1.jpg');
+//   });
+
+  // //To test the asset image
+  // testWidgets('AssetImage from package', (WidgetTester tester) async {
+  //   const childWidget = AssetImage('assets/images/News1.jpg');
+  //   await tester.pumpWidget(Container(child: childWidget));
+  //   expect(find.byType(childWidget), findsOneWidget);
+  // });
+
+  testWidgets(
+    "Checking the image",
+    (WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(home: Scaffold()));
+      expect(find.image(const AssetImage('assets/images/News1.jpg')),
+          findsNWidgets(1));
+    },
+  );
 }
