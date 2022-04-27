@@ -5,7 +5,7 @@ import 'package:network_image_mock/network_image_mock.dart';
 
 Widget makeTestableWidget() => MaterialApp(
     home: Image.network(
-        'https://media.npr.org/assets/img/2020/04/28/gettyimages-1205434458_custom-c47a8defd1fa1c6c825b88646de9f1873aff8d0a.jpg'));
+        'https://www.cityam.com/wp-content/uploads/2022/02/GettyImages-1233945081-1.jpg'));
 
 void main() {
   //To test the scaffold using a key
