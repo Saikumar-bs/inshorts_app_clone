@@ -39,4 +39,16 @@ void main() {
 
     expect(infoFinder, findsOneWidget);
   });
+
+//To check the text color and font size of the heading
+  testWidgets('To test color and fontSize of text',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+
+    final text = tester.widget<Text>(find.text(
+        "As Delhi Sees Over 60% Spike, India's Fresh Covid Tally Zooms to 2,380"));
+
+    expect(text.style?.color, Colors.black);
+    expect(text.style?.fontSize, 25.0);
+  });
 }

@@ -3,9 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 
 //to test the vertical swipe of the app
-void main() {
-  group('Flutter Driver demo', () {
-    FlutterDriver driver;
+
 test('test pageview vertical swipe', () async {
   final SerializableFinder pv = find.byValuekey ('pageview');
 
@@ -13,4 +11,3 @@ test('test pageview vertical swipe', () async {
   await driver.scroll(pv, 0, -600, Duration(milliseconds: 500));
   await driver.getText(find.text('Second'));
 });
-  }
