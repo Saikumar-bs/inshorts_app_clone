@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:inshorts_clone/main.dart';
 import 'package:inshorts_clone/news_screen.dart';
 import 'package:network_image_mock/network_image_mock.dart';
+import 'package:inshorts_clone/constants.dart';
 
 Widget makeTestableWidget() => MaterialApp(
     home: Image.network(
@@ -30,11 +31,9 @@ void main() {
   testWidgets('test headline and info', (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
 
-    final headingsFinder = find.text(
-        "As Delhi Sees Over 60% Spike, India's Fresh Covid Tally Zooms to 2,380");
+    final headingsFinder = find.text(kHeading1);
 
-    final infoFinder = find.text(
-        "Delhi logged 1,009 fresh Covid cases on Wednesday, a 60 per cent jump from a day ago, with the city government making the wearing of masks in public places mandatory again and announcing a Rs 500 fine on violators. This was the maximum number of cases recorded in Delhi since February 10 when 1,104 infections were reported.");
+    final infoFinder = find.text(kDetails1);
 
     expect(headingsFinder, findsOneWidget);
 
@@ -46,8 +45,7 @@ void main() {
       (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
 
-    final text = tester.widget<Text>(find.text(
-        "As Delhi Sees Over 60% Spike, India's Fresh Covid Tally Zooms to 2,380"));
+    final text = tester.widget<Text>(find.text(kHeading1));
 
     expect(text.style?.color, Colors.black);
     expect(text.style?.fontSize, 25.0);
@@ -59,8 +57,7 @@ void main() {
       (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
 
-    final text = tester.widget<Text>(find.text(
-        "Delhi logged 1,009 fresh Covid cases on Wednesday, a 60 per cent jump from a day ago, with the city government making the wearing of masks in public places mandatory again and announcing a Rs 500 fine on violators. This was the maximum number of cases recorded in Delhi since February 10 when 1,104 infections were reported."));
+    final text = tester.widget<Text>(find.text(kDetails1));
 
     expect(text.style?.color, Colors.black);
     expect(text.style?.fontSize, 18.0);
