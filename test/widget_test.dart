@@ -9,12 +9,12 @@ Widget makeTestableWidget() => MaterialApp(
 
 void main() {
   //To test the scaffold using a key
-  testWidgets('find scaffold using a Key', (WidgetTester tester) async {
-    //act
-    await tester.pumpWidget(const MaterialApp(key: Key('Scaffold')));
+  testWidgets('finds a widget using a Key', (WidgetTester tester) async {
+    const testKey = Key('Scaffold');
 
-    //assert
-    expect(find.byKey(const Key('Scaffold')), findsOneWidget);
+    await tester.pumpWidget(const MaterialApp(key: testKey, home: Scaffold()));
+
+    expect(find.byKey(testKey), findsOneWidget);
   });
 
 //To check the network image using mock
