@@ -45,7 +45,7 @@ class _NewsScreenState extends State<NewsScreen> {
             //   provider.endPosition();
             // },
             child: PageView(
-                key: const Key('pageview'),
+                key: const Key('pv'),
                 controller: _controller,
                 scrollDirection: Axis.vertical,
                 children: [
