@@ -11,7 +11,7 @@ Widget makeTestableWidget() => MaterialApp(
 
 void main() {
   //To test the scaffold using a key
-  testWidgets('finds a widget using a Key', (WidgetTester tester) async {
+  testWidgets('finds scaffold using a Key', (WidgetTester tester) async {
     const testKey = Key('Scaffold');
 
     await tester.pumpWidget(const MaterialApp(key: testKey, home: Scaffold()));
