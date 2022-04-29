@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:inshorts_clone/main.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -58,6 +59,40 @@ void main() {
     },
   );
 
+  String? swipeDirection;
+
+  _launchURL() async {
+    const url = 'https://www.hindustantimes.com';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  void startPosition(DragStartDetails details) {}
+
+  void updatePosition(DragUpdateDetails details, BuildContext context) {
+    swipeDirection = details.delta.dx < 0 ? 'left' : 'right';
+    if (swipeDirection == 'left') {
+      _launchURL();
+    }
+
+    testWidgets("check the swipe and url launch", (WidgetTester tester) async {
+      await tester.pumpWidget(MyApp());
+      await Future.delayed(const Duration(seconds: 2));
+      await tester.pumpWidget(GestureDetector(
+        onPanUpdate: (
+          DragUpdateDetails details,
+        ) {
+          updatePosition();
+        },
+      ));
+      await tester.pump();
+
+      // final myurl = find.byWidget(launch('https://www.hindustantimes.com')););
+    });
+  }
   // testWidgets(
   //   "App Testing by calling function",
   //   (WidgetTester tester) async {
