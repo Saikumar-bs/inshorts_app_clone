@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:inshorts_clone/main.dart';
+import 'package:inshorts_clone/newsCard.dart';
 import 'package:inshorts_clone/news_screen.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:inshorts_clone/constants.dart';
@@ -96,4 +97,11 @@ void main() {
   //         findsNWidgets(1));
   //   },
   // );
+
+//   testWidgets("Scrolltesting", (WidgetTester tester) async {
+//     await tester.pumpWidget(MaterialApp(
+//       home: NewsCard(headings: List.generate(2, (index) => "News $index")),
+//     ));
+//   });
+// }
 }
