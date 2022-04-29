@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:inshorts_clone/constants.dart';
 import 'package:inshorts_clone/main.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -33,10 +34,7 @@ void main() {
       await Future.delayed(const Duration(seconds: 3));
       await tester.pump();
 
-      final myheading = find.text(
-          "MS Dhoni smashes 16 runs off last 4 balls as CSK defeat MI on last ball");
-
-      expect(myheading, findsOneWidget);
+      expect(find.text(kDetails2), findsOneWidget);
     },
   );
 
@@ -52,10 +50,7 @@ void main() {
       await Future.delayed(const Duration(seconds: 1));
       await tester.pump();
 
-      final myheading = find.text(
-          "PM releases commemorative coin, postage stamp on 400th Parkash Purab");
-
-      expect(myheading, findsOneWidget);
+      expect(find.text(kDetails3), findsOneWidget);
     },
   );
 
@@ -85,12 +80,20 @@ void main() {
         onPanUpdate: (
           DragUpdateDetails details,
         ) {
-          updatePosition();
+          updatePosition(details, context);
         },
       ));
+      await Future.delayed(const Duration(seconds: 2));
       await tester.pump();
 
-      // final myurl = find.byWidget(launch('https://www.hindustantimes.com')););
+      final myheading = find.text(
+          "MS Dhoni smashes 16 runs off last 4 balls as CSK defeat MI on last ball");
+
+      expect(myheading, findsOneWidget);
+
+      // final myurl = find.byWidget(launch('https://www.hindustantimes.com'));
+
+      // expect(myurl, findsOneWidget);
     });
   }
   // testWidgets(
