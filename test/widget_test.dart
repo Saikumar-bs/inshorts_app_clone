@@ -97,11 +97,4 @@ void main() {
   //         findsNWidgets(1));
   //   },
   // );
-
-//   testWidgets("Scrolltesting", (WidgetTester tester) async {
-//     await tester.pumpWidget(MaterialApp(
-//       home: NewsCard(headings: List.generate(2, (index) => "News $index")),
-//     ));
-//   });
-// }
 }

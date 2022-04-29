@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:inshorts_clone/main.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:inshorts_clone/constants.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -23,8 +22,9 @@ void main() {
   //       findsOneWidget);
   // });
 
+//To check the swipe once and verify the text
   testWidgets(
-    "check the slider widget",
+    "check the swipe",
     (WidgetTester tester) async {
       await tester.pumpWidget(MyApp());
       await Future.delayed(const Duration(seconds: 3));
@@ -34,6 +34,25 @@ void main() {
 
       final myheading = find.text(
           "MS Dhoni smashes 16 runs off last 4 balls as CSK defeat MI on last ball");
+
+      expect(myheading, findsOneWidget);
+    },
+  );
+
+//To check the swipe twice and verify the text
+  testWidgets(
+    "check the swipe for 2 pages",
+    (WidgetTester tester) async {
+      await tester.pumpWidget(MyApp());
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.drag(find.byType(PageView), const Offset(0, -660));
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.drag(find.byType(PageView), const Offset(0, -660));
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.pump();
+
+      final myheading = find.text(
+          "PM releases commemorative coin, postage stamp on 400th Parkash Purab");
 
       expect(myheading, findsOneWidget);
     },
