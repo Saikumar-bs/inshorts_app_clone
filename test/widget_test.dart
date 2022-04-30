@@ -5,6 +5,7 @@ import 'package:inshorts_clone/newsCard.dart';
 import 'package:inshorts_clone/news_screen.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:inshorts_clone/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Widget makeTestableWidget() => MaterialApp(
     home: Image.network(
@@ -97,4 +98,64 @@ void main() {
   //         findsNWidgets(1));
   //   },
   // );
+
+  testWidgets("Pan working check", (WidgetTester tester) async {
+    String? swipeDirection;
+
+    _launchURL() async {
+      const url = 'https://www.hindustantimes.com';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
+    void updatePosition(DragUpdateDetails details) {
+      swipeDirection = details.delta.dx < 0 ? 'left' : 'right';
+      if (swipeDirection == 'left') {
+        _launchURL();
+      }
+    }
+
+    await tester.pumpWidget(SizedBox.expand(
+      child: GestureDetector(
+        onPanUpdate: (
+          DragUpdateDetails details,
+        ) {
+          updatePosition(details);
+        },
+      ),
+    ));
+    await tester.pump();
+
+    expect(swipeDirection, isNull);
+
+    // await tester.dragFrom(const Offset(250, 350), const Offset(850, 350));
+    await tester.drag(find.byType(GestureDetector), const Offset(440, 0));
+    await Future.delayed(const Duration(seconds: 6));
+
+    expect(swipeDirection, 'left');
+  });
+
+  testWidgets(
+    "Pan swipe check",
+    (WidgetTester tester) async {
+      Offset? panDelta;
+      String? swipe;
+      await tester.pumpWidget(GestureDetector(
+        onPanUpdate: (DragUpdateDetails details) {
+          panDelta = details.delta;
+          swipe = panDelta
+              .toString(); // Neglect this (Trying to make a method for function)
+
+          print('Swiped to left');
+        },
+      ));
+      expect(panDelta, isNull);
+      // await tester.dragFrom(const Offset(200, 0.0), const Offset(440.0, 0.0));
+      await tester.drag(find.byType(GestureDetector), const Offset(440, 0));
+      expect(panDelta!.dx, 420.0);
+    },
+  );
 }
