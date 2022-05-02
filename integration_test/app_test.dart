@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:inshorts_clone/constants.dart';
 import 'package:inshorts_clone/main.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -38,17 +37,26 @@ void main() {
     await tester.drag(find.byType(PageView), const Offset(0, 660));
     await Future.delayed(const Duration(seconds: 5));
 
-    await tester.pumpWidget(GestureDetector(
-      onPanUpdate: (DragUpdateDetails details) {
-        panDelta = details.delta;
-        print('Swiped to left');
-        if (panDelta!.dx == 0) {
-          print('Swiped to left');
-        } else {
-          _launchURL();
-        }
-      },
-    ));
+    await tester.pumpWidget(
+      GestureDetector(
+        onPanUpdate: (
+          DragUpdateDetails details,
+        ) {
+          updatePosition(details);
+        },
+      ),
+    );
+    // await tester.pumpWidget(GestureDetector(
+    //   onPanUpdate: (DragUpdateDetails details) {
+    //     panDelta = details.delta;
+    //     print('Swiped to left');
+    //     if (panDelta!.dx == 0) {
+    //       print('Swiped to left');
+    //     } else {
+    //       _launchURL();
+    //     }
+    //   },
+    // ));
     expect(swipeDirection, isNull);
 
     await tester.pumpAndSettle();
